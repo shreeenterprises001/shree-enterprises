@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shree Enterprises – Water Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:  #080f1d;
+  --deep:  #0b1e38;
+  --blue:  #163d72;
+  --mid:   #1e5299;
+  --sky:   #3a8fd1;
+  --aqua:  #6ec6e6;
+  --frost: #c2e0f4;
+  --white: #eef6fc;
+  --muted: #5d88a8;
+  --accent:#00c3f5;
+  --card:  rgba(11,30,56,0.75);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:#b8d8ef;font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--navy)}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:3px}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.3rem 5rem;
+  background:rgba(8,15,29,0.88);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(58,143,209,0.1);
+  transition:padding 0.3s,background 0.3s;
+}
+nav.scrolled{padding:0.85rem 5rem;background:rgba(8,15,29,0.97)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--white);letter-spacing:0.03em;text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:transparent;border:1px solid var(--sky);color:var(--sky);padding:0.5rem 1.3rem;font-family:'DM Sans',sans-serif;font-size:0.76rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.3s}
+.nav-cta:hover{background:var(--sky);color:var(--navy)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:9rem 5rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 65% at 72% 48%,rgba(22,61,114,0.42) 0%,transparent 68%),radial-gradient(ellipse 35% 35% at 15% 82%,rgba(0,195,245,0.07) 0%,transparent 55%)}
+.grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(58,143,209,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(58,143,209,0.035) 1px,transparent 1px);background-size:55px 55px}
+.rings-wrap{position:absolute;right:-8rem;top:50%;transform:translateY(-50%);width:750px;height:750px;pointer-events:none}
+.rings-wrap circle{fill:none;stroke:rgba(58,143,209,0.1);stroke-width:1}
+.r1{animation:rpl 7s ease-out infinite}
+.r2{animation:rpl 7s ease-out 1.75s infinite}
+.r3{animation:rpl 7s ease-out 3.5s infinite}
+.r4{animation:rpl 7s ease-out 5.25s infinite}
+@keyframes rpl{0%{r:60;opacity:.7}100%{r:340;opacity:0}}
+.hero-eyebrow{font-size:0.68rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:0.8rem;margin-bottom:1.6rem;animation:fadeUp 0.9s ease 0.1s both}
+.hero-eyebrow::before{content:'';width:2.5rem;height:1px;background:var(--accent)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,7.5vw,7rem);font-weight:300;line-height:1.05;color:var(--white);max-width:720px;margin-bottom:1.6rem;animation:fadeUp 0.9s ease 0.25s both}
+.hero h1 em{font-style:italic;color:var(--aqua)}
+.hero-sub{font-size:1rem;line-height:1.8;color:var(--muted);max-width:480px;margin-bottom:3rem;animation:fadeUp 0.9s ease 0.4s both}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.9s ease 0.55s both}
+.btn-p{background:var(--accent);color:var(--navy);border:none;padding:0.9rem 2.4rem;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+.btn-p:hover{background:var(--sky);transform:translateY(-2px)}
+.btn-g{background:transparent;color:var(--frost);border:1px solid rgba(194,224,244,0.22);padding:0.9rem 2.4rem;font-family:'DM Sans',sans-serif;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+.btn-g:hover{border-color:var(--sky);color:var(--sky)}
+.hero-stats{position:absolute;bottom:3.5rem;right:5rem;display:flex;gap:3.5rem;animation:fadeUp 0.9s ease 0.7s both}
+.stat .n{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:var(--white);line-height:1}
+.stat .n em{font-style:normal;color:var(--accent)}
+.stat .l{font-size:0.67rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-top:0.2rem}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTIONS */
+section{padding:7rem 5rem}
+.s-tag{font-size:0.67rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem}
+.s-tag::before{content:'';width:2rem;height:1px;background:var(--accent)}
+.s-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.4rem);font-weight:300;color:var(--white);line-height:1.12;margin-bottom:1rem}
+.s-sub{color:var(--muted);font-size:0.92rem;line-height:1.8;max-width:520px}
+
+/* ABOUT */
+.about{background:var(--deep);border-top:1px solid rgba(58,143,209,0.1)}
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1100px}
+.drop-vis{position:relative;height:440px;border:1px solid rgba(58,143,209,0.12);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.drop-vis::before{content:'';position:absolute;inset:1.2rem;border:1px solid rgba(58,143,209,0.07)}
+.drop-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 55% 45%,rgba(22,61,114,0.5) 0%,transparent 68%)}
+.drop-svg{animation:floatDrop 5s ease-in-out infinite;position:relative;z-index:1}
+@keyframes floatDrop{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+.facts-row{display:flex;gap:1.5rem;margin-top:2.5rem;flex-wrap:wrap}
+.fact{flex:1;min-width:90px;padding:1.2rem;border:1px solid rgba(58,143,209,0.12)}
+.fact .fn{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--accent)}
+.fact .fl{font-size:0.7rem;color:var(--muted);letter-spacing:0.06em;margin-top:0.2rem}
+
+/* PRODUCTS */
+.products{border-top:1px solid rgba(58,143,209,0.1)}
+.prod-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem;flex-wrap:wrap;gap:2rem}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+
+/* PRODUCT CARD */
+.pcard{background:var(--card);border:1px solid rgba(58,143,209,0.12);transition:all 0.4s cubic-bezier(0.22,0.61,0.36,1);position:relative;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;text-decoration:none;color:inherit}
+.pcard::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,195,245,0.07) 0%,transparent 50%);opacity:0;transition:opacity 0.4s}
+.pcard:hover{border-color:rgba(58,143,209,0.4);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.4),0 0 0 1px rgba(58,143,209,0.15)}
+.pcard:hover::after{opacity:1}
+.pcard.wide{grid-column:span 2}
+.pcard-bar{height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--sky));transition:width 0.5s cubic-bezier(0.22,0.61,0.36,1)}
+.pcard:hover .pcard-bar{width:100%}
+.pcard-body{padding:2.2rem;flex:1;display:flex;flex-direction:column}
+.pcard-icon{margin-bottom:1.4rem}
+.pcard-brand{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem}
+.pcard-title{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:300;color:var(--white);line-height:1.2;margin-bottom:0.9rem}
+.pcard-desc{font-size:0.86rem;color:var(--muted);line-height:1.75;margin-bottom:1.4rem}
+.pcard-specs{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:1.4rem}
+.spec{padding:0.6rem 0.8rem;background:rgba(58,143,209,0.06);border:1px solid rgba(58,143,209,0.1)}
+.spec-k{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+.spec-v{font-size:0.8rem;color:var(--frost);margin-top:0.12rem;font-weight:400}
+.pcard-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem}
+.ptag{font-size:0.64rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--sky);border:1px solid rgba(58,143,209,0.22);padding:0.25rem 0.65rem}
+.pcard-cta{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:1.3rem;border-top:1px solid rgba(58,143,209,0.1)}
+.pcard-cta-text{font-size:0.73rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--sky);transition:color 0.3s}
+.pcard:hover .pcard-cta-text{color:var(--accent)}
+.arrow{width:30px;height:30px;border:1px solid rgba(58,143,209,0.2);display:flex;align-items:center;justify-content:center;transition:all 0.3s}
+.pcard:hover .arrow{background:var(--accent);border-color:var(--accent)}
+
+/* BRANDS */
+.brands-strip{background:var(--deep);border-top:1px solid rgba(58,143,209,0.1);padding:4.5rem 5rem}
+.brands-label{font-size:0.66rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:2.8rem}
+.brands-row{display:flex;justify-content:center;align-items:stretch;border:1px solid rgba(58,143,209,0.1);overflow-x:auto}
+.brand-item{flex:1;padding:1.8rem 1rem;text-align:center;border-right:1px solid rgba(58,143,209,0.1);transition:background 0.3s;cursor:pointer;text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:120px}
+.brand-item:last-child{border-right:none}
+.brand-item:hover{background:rgba(58,143,209,0.06)}
+.brand-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:rgba(194,224,244,0.3);letter-spacing:0.05em;transition:color 0.3s}
+.brand-item:hover .brand-name{color:var(--sky)}
+.brand-cat{font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(93,136,168,0.5);margin-top:0.35rem;transition:color 0.3s}
+.brand-item:hover .brand-cat{color:var(--muted)}
+
+/* HOW */
+.how{border-top:1px solid rgba(58,143,209,0.1)}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(58,143,209,0.12);margin-top:3.5rem}
+.step{padding:2.5rem 2rem;border-right:1px solid rgba(58,143,209,0.12);transition:background 0.3s}
+.step:hover{background:rgba(58,143,209,0.04)}
+.step:last-child{border-right:none}
+.step-n{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(58,143,209,0.13);line-height:1;margin-bottom:1.2rem}
+.step-t{font-size:0.88rem;font-weight:500;color:var(--white);margin-bottom:0.6rem}
+.step-d{font-size:0.82rem;color:var(--muted);line-height:1.7}
+
+/* CONTACT */
+.contact{background:var(--deep);border-top:1px solid rgba(58,143,209,0.1)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.c-line{display:flex;align-items:flex-start;gap:1rem;padding:1.4rem 0;border-bottom:1px solid rgba(58,143,209,0.08)}
+.c-line:last-of-type{border-bottom:none}
+.c-ico{width:38px;height:38px;border:1px solid rgba(58,143,209,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--sky);font-size:0.9rem}
+.c-lbl{font-size:0.66rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--muted)}
+.c-val{font-size:0.94rem;color:var(--white);margin-top:0.2rem}
+.form{display:flex;flex-direction:column;gap:1rem}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.f-field{display:flex;flex-direction:column;gap:0.35rem}
+.f-field label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted)}
+.f-field input,.f-field textarea,.f-field select{background:rgba(11,30,56,0.8);border:1px solid rgba(58,143,209,0.13);color:var(--white);padding:0.85rem 1rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.3s;width:100%}
+.f-field input:focus,.f-field textarea:focus,.f-field select:focus{border-color:var(--sky)}
+.f-field input::placeholder,.f-field textarea::placeholder{color:rgba(93,136,168,0.5)}
+.f-field textarea{resize:vertical;min-height:105px}
+.f-field select option{background:var(--deep)}
+.submit-btn{background:var(--accent);color:var(--navy);border:none;padding:1rem;font-family:'DM Sans',sans-serif;font-size:0.84rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;width:100%}
+.submit-btn:hover{background:var(--sky)}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:1px solid rgba(58,143,209,0.1);padding:2.5rem 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--white)}
+.f-logo span{color:var(--accent)}
+.f-copy{font-size:0.75rem;color:var(--muted)}
+.f-nav{display:flex;gap:2rem}
+.f-nav a{font-size:0.74rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s}
+.f-nav a:hover{color:var(--sky)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.rv.on{opacity:1;transform:translateY(0)}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;z-index:500;background:rgba(8,15,29,0.93);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.modal-bg.open{opacity:1;pointer-events:all}
+.modal{background:var(--deep);border:1px solid rgba(58,143,209,0.2);width:100%;max-width:820px;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(24px);transition:transform 0.35s}
+.modal-bg.open .modal{transform:translateY(0)}
+.modal-top{height:3px;background:linear-gradient(90deg,var(--accent),var(--sky))}
+.modal-inner{padding:3rem}
+.modal-close{position:absolute;top:1.2rem;right:1.4rem;background:transparent;border:1px solid rgba(58,143,209,0.2);color:var(--muted);width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;transition:all 0.3s;line-height:1}
+.modal-close:hover{color:var(--accent);border-color:var(--accent)}
+.modal-brand{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:300;color:var(--white);line-height:1.15;margin-bottom:1.5rem}
+.modal-desc{font-size:0.91rem;color:var(--muted);line-height:1.85;margin-bottom:2rem}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:2rem}
+.modal-spec{padding:0.9rem 1.1rem;border:1px solid rgba(58,143,209,0.12)}
+.modal-spec .sk{font-size:0.61rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
+.modal-spec .sv{font-size:0.88rem;color:var(--white);margin-top:0.2rem;font-weight:400}
+.modal-h4{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.feat-list{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem}
+.feat-item{display:flex;align-items:flex-start;gap:0.8rem}
+.feat-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);margin-top:0.48rem;flex-shrink:0}
+.feat-text{font-size:0.87rem;color:var(--muted);line-height:1.65}
+.modal-tags{display:flex;flex-wrap:wrap;gap:0.45rem;margin-bottom:2rem}
+.modal-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.modal-link{display:inline-flex;align-items:center;gap:0.6rem;background:var(--accent);color:var(--navy);border:none;padding:0.85rem 2rem;font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.3s}
+.modal-link:hover{background:var(--sky)}
+.modal-link-g{display:inline-flex;align-items:center;gap:0.6rem;background:transparent;color:var(--sky);border:1px solid rgba(58,143,209,0.3);padding:0.85rem 2rem;font-family:'DM Sans',sans-serif;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.3s}
+.modal-link-g:hover{border-color:var(--sky);color:var(--white)}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  section{padding:5rem 1.5rem}
+  .hero{padding:7rem 1.5rem 3rem}
+  .about-wrap,.contact-grid{grid-template-columns:1fr}
+  .prod-grid{grid-template-columns:1fr}
+  .pcard.wide{grid-column:1}
+  .steps-grid{grid-template-columns:1fr 1fr}
+  .step{border-bottom:1px solid rgba(58,143,209,0.12)}
+  .hero-stats{position:static;margin-top:3rem;justify-content:flex-start}
+  .brands-strip{padding:4rem 1.5rem}
+  .brands-row{flex-wrap:wrap}
+  footer{padding:2rem 1.5rem}
+  .modal-inner{padding:1.8rem}
+  .modal-grid{grid-template-columns:1fr}
+  nav.scrolled{padding:0.85rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="#home" class="logo">Shree <span>Enterprises</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#brands">Brands</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="grid-overlay"></div>
+  <svg class="rings-wrap" viewBox="0 0 750 750" xmlns="http://www.w3.org/2000/svg">
+    <circle class="r1" cx="375" cy="375" r="60"/>
+    <circle class="r2" cx="375" cy="375" r="60"/>
+    <circle class="r3" cx="375" cy="375" r="60"/>
+    <circle class="r4" cx="375" cy="375" r="60"/>
+  </svg>
+  <div style="position:relative">
+    <p class="hero-eyebrow">Trusted Water Solutions</p>
+    <h1>Pure Water,<br><em>Designed</em> for Life</h1>
+    <p class="hero-sub">Shree Enterprises brings world-class water technology to homes and businesses — pressure pumps, heat pump heaters, advanced softeners, and smart meters from brands you trust.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-p">Explore Products</a>
+      <a href="#contact" class="btn-g">Get a Quote</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="n">15<em>+</em></div><div class="l">Years of Service</div></div>
+    <div class="stat"><div class="n">7<em>+</em></div><div class="l">Premium Brands</div></div>
+    <div class="stat"><div class="n">100<em>%</em></div><div class="l">Customer Focus</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="rv">
+      <p class="s-tag">Our Story</p>
+      <h2 class="s-h">A Family Commitment to <em>Water Excellence</em></h2>
+      <p style="color:var(--muted);line-height:1.85;font-size:0.93rem;margin-bottom:1.4rem">What began as a small family-owned enterprise has grown into a respected name in water solutions. We started with one mission — to bring clean, safe, and efficient water to every home and business we serve.</p>
+      <p style="color:var(--muted);line-height:1.85;font-size:0.93rem;margin-bottom:2.5rem">Today we are an authorised partner of some of the world's most trusted water technology brands — delivering end-to-end solutions from site assessment to professional installation and long-term after-sales care.</p>
+      <div class="facts-row">
+        <div class="fact"><div class="fn">3M</div><div class="fl">Certified Partner</div></div>
+        <div class="fact"><div class="fn">GF</div><div class="fl">Grundfos Dealer</div></div>
+        <div class="fact"><div class="fn">AMC</div><div class="fl">Service Packages</div></div>
+        <div class="fact"><div class="fn">24/7</div><div class="fl">Support</div></div>
+      </div>
+    </div>
+    <div class="drop-vis rv">
+      <div class="drop-bg"></div>
+      <svg class="drop-svg" width="130" height="160" viewBox="0 0 130 160">
+        <path d="M65 8 C65 8 10 75 10 105 A55 55 0 0 0 120 105 C120 75 65 8 65 8Z" fill="none" stroke="rgba(58,143,209,0.5)" stroke-width="1.5"/>
+        <path d="M65 25 C65 25 22 82 22 105 A43 43 0 0 0 108 105 C108 82 65 25 65 25Z" fill="rgba(22,61,114,0.35)"/>
+        <ellipse cx="45" cy="90" rx="10" ry="14" fill="rgba(255,255,255,0.07)" transform="rotate(-25 45 90)"/>
+      </svg>
+      <p style="position:absolute;bottom:2rem;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--frost);letter-spacing:0.12em;text-align:center;opacity:0.55">Water. <em>Refined.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="prod-header rv">
+    <div>
+      <p class="s-tag">What We Offer</p>
+      <h2 class="s-h">Complete Water <em>Solutions</em></h2>
+    </div>
+    <p class="s-sub" style="margin-bottom:0">Click any product card to explore full specifications, features, and visit the brand's official website.</p>
+  </div>
+  <div class="prod-grid">
+
+    <!-- GRUNDFOS wide -->
+    <div class="pcard wide rv" onclick="openModal('grundfos')">
+      <div class="pcard-bar"></div>
+      <div class="pcard-body">
+        <svg class="pcard-icon" width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="20" stroke="#3a8fd1" stroke-width="1"/>
+          <path d="M10 28C10 20 34 20 34 28" stroke="#3a8fd1" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M22 10 L22 22" stroke="#6ec6e6" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="22" cy="22" r="4" fill="#3a8fd1" opacity="0.5"/>
+          <path d="M16 16 L22 10 L28 16" stroke="#6ec6e6" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p class="pcard-brand">Grundfos</p>
+        <h3 class="pcard-title">Pressure Pumps — CM & CME Series</h3>
+        <p class="pcard-desc">World-trusted horizontal multi-stage centrifugal pumps for consistent, quiet, and energy-efficient water pressure. The modular design enables complete customisation for residential, commercial, and light industrial applications. Available in cast iron and stainless steel with fixed (CM) and variable-speed (CME) motor options.</p>
+        <div class="pcard-specs">
+          <div class="spec"><div class="spec-k">Flow Rate</div><div class="spec-v">Up to 16 m³/h</div></div>
+          <div class="spec"><div class="spec-k">Max Head</div><div class="spec-v">Up to 220 m</div></div>
+          <div class="spec"><div class="spec-k">Variants</div><div class="spec-v">CM (Fixed) / CME (Variable Speed)</div></div>
+          <div class="spec"><div class="spec-k">Material</div><div class="spec-v">Cast Iron / Stainless Steel</div></div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">Quiet</span><span class="ptag">Modular</span><span class="ptag">Variable Speed</span><span class="ptag">Energy Efficient</span><span class="ptag">Residential & Commercial</span></div>
+        <div class="pcard-cta"><span class="pcard-cta-text">Explore & Visit Grundfos ↗</span><div class="arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="#6ec6e6" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- 3M SOFTENER -->
+    <div class="pcard rv" onclick="openModal('3msoft')">
+      <div class="pcard-bar"></div>
+      <div class="pcard-body">
+        <svg class="pcard-icon" width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <rect x="8" y="6" width="28" height="32" rx="3" stroke="#3a8fd1" stroke-width="1"/>
+          <path d="M8 20 L36 20" stroke="#3a8fd1" stroke-width="0.8"/><path d="M8 28 L36 28" stroke="#3a8fd1" stroke-width="0.8"/>
+          <circle cx="22" cy="13" r="3" fill="#6ec6e6" opacity="0.5"/>
+          <path d="M16 34 L22 38 L28 34" stroke="#6ec6e6" stroke-width="1" fill="none" stroke-linecap="round"/>
+        </svg>
+        <p class="pcard-brand">3M™</p>
+        <h3 class="pcard-title">Water Softener System WTS42</h3>
+        <p class="pcard-desc">Whole-home hard water treatment that removes calcium and magnesium deposits — protecting pipes, fixtures, and appliances from scale damage while giving you softer skin, brighter laundry, and cleaner dishes. Metered regeneration saves water and salt. NSF & WQA certified.</p>
+        <div class="pcard-specs">
+          <div class="spec"><div class="spec-k">Application</div><div class="spec-v">Up to 3-Bathroom Homes</div></div>
+          <div class="spec"><div class="spec-k">Certification</div><div class="spec-v">NSF / WQA</div></div>
+          <div class="spec"><div class="spec-k">Regeneration</div><div class="spec-v">Demand-Based (Metered)</div></div>
+          <div class="spec"><div class="spec-k">Components</div><div class="spec-v">Salt + Brine + Resin Tank</div></div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">NSF</span><span class="ptag">WQA</span><span class="ptag">Anti-Scale</span><span class="ptag">Ion Exchange</span></div>
+        <div class="pcard-cta"><span class="pcard-cta-text">Explore & Visit 3M ↗</span><div class="arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="#6ec6e6" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- 3M ECOSIP -->
+    <div class="pcard rv" onclick="openModal('ecosip')">
+      <div class="pcard-bar"></div>
+      <div class="pcard-body">
+        <svg class="pcard-icon" width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <path d="M22 5 C22 5 10 20 10 30 A12 12 0 0 0 34 30 C34 20 22 5 22 5Z" stroke="#3a8fd1" stroke-width="1" fill="none"/>
+          <path d="M15 30 Q22 25 29 30" stroke="#6ec6e6" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <circle cx="22" cy="30" r="3" fill="#3a8fd1" opacity="0.4"/>
+        </svg>
+        <p class="pcard-brand">3M™ Ecosip</p>
+        <h3 class="pcard-title">IAS140S Non-RO Drinking Water System</h3>
+        <p class="pcard-desc">Revolutionary kitchen purification using 3M's I.M.P.A.C.T. technology — 99.95% germ-free water from every tap, with zero electricity and zero water waste. A single cartridge lasts 1 lakh litres. Food-grade siliphose media prevents kitchen scale.</p>
+        <div class="pcard-specs">
+          <div class="spec"><div class="spec-k">Capacity</div><div class="spec-v">1,00,000 L / Cartridge</div></div>
+          <div class="spec"><div class="spec-k">Germ Removal</div><div class="spec-v">99.95%</div></div>
+          <div class="spec"><div class="spec-k">Power</div><div class="spec-v">None Required</div></div>
+          <div class="spec"><div class="spec-k">Water Waste</div><div class="spec-v">Zero</div></div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">Zero Waste</span><span class="ptag">No Electricity</span><span class="ptag">I.M.P.A.C.T.</span><span class="ptag">SQC Cartridge</span></div>
+        <div class="pcard-cta"><span class="pcard-cta-text">Explore & Visit 3M ↗</span><div class="arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="#6ec6e6" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- BENCHMARK -->
+    <div class="pcard rv" onclick="openModal('benchmark')">
+      <div class="pcard-bar"></div>
+      <div class="pcard-body">
+        <svg class="pcard-icon" width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <rect x="14" y="4" width="16" height="30" rx="2" stroke="#3a8fd1" stroke-width="1"/>
+          <rect x="4" y="30" width="36" height="10" rx="1" stroke="#6ec6e6" stroke-width="1"/>
+          <path d="M22 10 L22 22" stroke="#6ec6e6" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="22" cy="24" r="2" fill="#3a8fd1" opacity="0.6"/>
+        </svg>
+        <p class="pcard-brand">Benchmark</p>
+        <h3 class="pcard-title">Heat Pump Water Heaters</h3>
+        <p class="pcard-desc">A-Class rated heat pumps that extract thermal energy from ambient air to heat water at up to 4× the efficiency of conventional electric geysers. Residential integrated and split models, commercial multi-unit setups, and dedicated swimming pool configurations available.</p>
+        <div class="pcard-specs">
+          <div class="spec"><div class="spec-k">COP Efficiency</div><div class="spec-v">Up to 4.0+</div></div>
+          <div class="spec"><div class="spec-k">Energy Rating</div><div class="spec-v">A-Class</div></div>
+          <div class="spec"><div class="spec-k">Applications</div><div class="spec-v">Home / Commercial / Pool</div></div>
+          <div class="spec"><div class="spec-k">Tank Options</div><div class="spec-v">Short / Medium / Tall</div></div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">A-Class</span><span class="ptag">4× Efficient</span><span class="ptag">Pool</span><span class="ptag">Commercial</span></div>
+        <div class="pcard-cta"><span class="pcard-cta-text">Explore & Visit Benchmark ↗</span><div class="arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="#6ec6e6" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- ZEROB -->
+    <div class="pcard rv" onclick="openModal('zerob')">
+      <div class="pcard-bar"></div>
+      <div class="pcard-body">
+        <svg class="pcard-icon" width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="18" stroke="#3a8fd1" stroke-width="1"/>
+          <path d="M14 22 L19 27 L30 16" stroke="#6ec6e6" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="22" cy="22" r="10" stroke="#3a8fd1" stroke-width="0.5" stroke-dasharray="2 3"/>
+        </svg>
+        <p class="pcard-brand">Zero B Hydrolife · Ion Exchange</p>
+        <h3 class="pcard-title">Alkaline Water Purifier</h3>
+        <p class="pcard-desc">India's #1 alkaline water purifier by Ion Exchange. Uses advanced ionisation to raise purified water pH to a healthy alkaline range (7.5–9.5) with antioxidant (negative ORP) properties — supporting immunity, hydration, and digestion. 5-year warranty with doorstep service.</p>
+        <div class="pcard-specs">
+          <div class="spec"><div class="spec-k">Output pH</div><div class="spec-v">7.5 – 9.5 Alkaline</div></div>
+          <div class="spec"><div class="spec-k">ORP</div><div class="spec-v">Negative (Antioxidant)</div></div>
+          <div class="spec"><div class="spec-k">Purification</div><div class="spec-v">RO + UV + Minerals</div></div>
+          <div class="spec"><div class="spec-k">Warranty</div><div class="spec-v">5 Years</div></div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">Alkaline</span><span class="ptag">Antioxidizing</span><span class="ptag">Immunity Boost</span><span class="ptag">5-Yr Warranty</span></div>
+        <div class="pcard-cta"><span class="pcard-cta-text">Explore & Visit Zero B ↗</span><div class="arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="#6ec6e6" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- EUREKA -->
+    <div class="pcard rv" onclick="openModal('eureka')">
+      <div class="pcard-bar"></div>
+      <div class="pcard-body">
+        <svg class="pcard-icon" width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <rect x="6" y="10" width="32" height="24" rx="3" stroke="#3a8fd1" stroke-width="1"/>
+          <path d="M6 18 L38 18" stroke="#3a8fd1" stroke-width="0.8"/>
+          <circle cx="22" cy="28" r="5" stroke="#6ec6e6" stroke-width="1"/>
+          <path d="M22 6 L22 10" stroke="#6ec6e6" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M18 38 L26 38" stroke="#6ec6e6" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <p class="pcard-brand">Eureka Forbes · Aquaguard</p>
+        <h3 class="pcard-title">Water Purifiers & AWS Softener</h3>
+        <p class="pcard-desc">India's most trusted purification brand since 1984. Full range: RO, UV, Alkaline Boost, Active Copper, Under Counter, and Hot & Ambient dispensers. Plus the AWS i-2500 whole-home softener with ionic-transfer technology for up to 4000 LPH hard water treatment.</p>
+        <div class="pcard-specs">
+          <div class="spec"><div class="spec-k">Purification</div><div class="spec-v">RO + UV + UF</div></div>
+          <div class="spec"><div class="spec-k">Softener Flow</div><div class="spec-v">Up to 4000 LPH</div></div>
+          <div class="spec"><div class="spec-k">Technology</div><div class="spec-v">Ionic Transfer (AWS i-2500)</div></div>
+          <div class="spec"><div class="spec-k">Variants</div><div class="spec-v">6+ Models Available</div></div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">RO+UV</span><span class="ptag">Active Copper</span><span class="ptag">4000 LPH</span><span class="ptag">Hot & Ambient</span></div>
+        <div class="pcard-cta"><span class="pcard-cta-text">Explore & Visit Eureka Forbes ↗</span><div class="arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="#6ec6e6" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- DHAARA wide -->
+    <div class="pcard wide rv" onclick="openModal('dhaara')">
+      <div class="pcard-bar"></div>
+      <div class="pcard-body">
+        <svg class="pcard-icon" width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="26" r="14" stroke="#3a8fd1" stroke-width="1"/>
+          <path d="M22 12 L22 5" stroke="#6ec6e6" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="22" cy="26" r="5" fill="#3a8fd1" opacity="0.4"/>
+          <path d="M10 10 L34 10" stroke="#3a8fd1" stroke-width="0.8"/>
+          <circle cx="32" cy="14" r="3" stroke="#6ec6e6" stroke-width="0.8"/>
+        </svg>
+        <p class="pcard-brand">Kritsnam Technologies</p>
+        <h3 class="pcard-title">Dhaara Smart — Intelligent IoT Water Meter</h3>
+        <p class="pcard-desc">India's most advanced CGWA-compliant smart water meter — built for regulatory groundwater monitoring with zero manual effort. Battery-powered with built-in 4G/2G telemetry that auto-uploads consumption data to a secure online logbook. IP68 all-weather rated, plug-and-play, no civil work or wiring required. Ideal for borewells, housing societies, industries, and municipal utilities needing to comply with CGWA mandates.</p>
+        <div class="pcard-specs">
+          <div class="spec"><div class="spec-k">Compliance</div><div class="spec-v">CGWA + ISO Certified</div></div>
+          <div class="spec"><div class="spec-k">Connectivity</div><div class="spec-v">4G / 2G Telemetry</div></div>
+          <div class="spec"><div class="spec-k">Weather Rating</div><div class="spec-v">IP68 (Full Immersion)</div></div>
+          <div class="spec"><div class="spec-k">Power Source</div><div class="spec-v">Battery — No Wiring Needed</div></div>
+          <div class="spec"><div class="spec-k">Installation</div><div class="spec-v">Plug & Play</div></div>
+          <div class="spec"><div class="spec-k">Data Logging</div><div class="spec-v">Automatic Online Logbook</div></div>
+        </div>
+        <div class="pcard-tags"><span class="ptag">CGWA Compliant</span><span class="ptag">ISO</span><span class="ptag">4G IoT</span><span class="ptag">IP68</span><span class="ptag">Battery</span><span class="ptag">Plug & Play</span></div>
+        <div class="pcard-cta"><span class="pcard-cta-text">Explore & Visit Kritsnam ↗</span><div class="arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="#6ec6e6" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands-strip" id="brands">
+  <p class="brands-label">Our Trusted Brand Partners — Click to Visit Their Official Sites</p>
+  <div class="brands-row">
+    <a class="brand-item" href="https://www.grundfos.com/in" target="_blank" rel="noopener"><span class="brand-name">Grundfos</span><span class="brand-cat">Pressure Pumps</span></a>
+    <a class="brand-item" href="https://www.3mindia.in/3M/en_IN/water-purification-in/" target="_blank" rel="noopener"><span class="brand-name">3M™</span><span class="brand-cat">Water Filtration</span></a>
+    <a class="brand-item" href="https://www.benchmarkheatpump.com" target="_blank" rel="noopener"><span class="brand-name">Benchmark</span><span class="brand-cat">Heat Pumps</span></a>
+    <a class="brand-item" href="https://www.ionexchangeglobal.com/zero-b/" target="_blank" rel="noopener"><span class="brand-name">Zero B</span><span class="brand-cat">Alkaline Purifiers</span></a>
+    <a class="brand-item" href="https://www.eurekaforbes.com" target="_blank" rel="noopener"><span class="brand-name">Eureka Forbes</span><span class="brand-cat">Aquaguard</span></a>
+    <a class="brand-item" href="https://www.kritsnam.in" target="_blank" rel="noopener"><span class="brand-name">Kritsnam</span><span class="brand-cat">Smart Metering</span></a>
+    <a class="brand-item" href="https://www.ionexchangeglobal.com" target="_blank" rel="noopener"><span class="brand-name">Ion Exchange</span><span class="brand-cat">Water Treatment</span></a>
+  </div>
+</div>
+
+<!-- HOW -->
+<section class="how" id="how">
+  <div class="rv">
+    <p class="s-tag">Our Process</p>
+    <h2 class="s-h">From Assessment to <em>After-Sales</em></h2>
+  </div>
+  <div class="steps-grid rv">
+    <div class="step"><div class="step-n">01</div><div class="step-t">Water Quality Assessment</div><p class="step-d">We begin with a comprehensive test of your water source — measuring TDS, hardness, pH, bacterial contamination, and flow requirements to understand exactly what your property needs.</p></div>
+    <div class="step"><div class="step-n">02</div><div class="step-t">Custom Solution Design</div><p class="step-d">Based on the assessment, we recommend the optimal combination of products — softeners, purifiers, heat pump heaters, pressure pumps, and smart meters — sized precisely for your space.</p></div>
+    <div class="step"><div class="step-n">03</div><div class="step-t">Professional Installation</div><p class="step-d">Certified technicians handle end-to-end installation, commissioning, and testing — ensuring every system operates at its rated performance from day one with full safety compliance.</p></div>
+    <div class="step"><div class="step-n">04</div><div class="step-t">AMC & Ongoing Support</div><p class="step-d">We offer Annual Maintenance Contracts, scheduled servicing, cartridge and filter replacements, and responsive support to keep your water systems running at peak performance year-round.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="rv">
+      <p class="s-tag">Get In Touch</p>
+      <h2 class="s-h">Let's Find Your <em>Perfect</em> Water Solution</h2>
+      <p style="color:var(--muted);font-size:0.9rem;line-height:1.85;margin-bottom:2.5rem">Whether you need a water softener for your home, a pressure booster for a commercial complex, or a smart metering system for CGWA compliance — our team will help with a free site assessment.</p>
+      <div class="c-line"><div class="c-ico">✉</div><div><div class="c-lbl">Email</div><div class="c-val">entershree123@gmail.com</div></div></div>
+      <div class="c-line"><div class="c-ico">✆</div><div><div class="c-lbl">Phone / WhatsApp</div><div class="c-val">+91 9630020040</div></div></div>
+      <div class="c-line"><div class="c-ico">◎</div><div><div class="c-lbl">Social Media</div><div style="display:flex;gap:1rem;margin-top:0.35rem"><a href="#" style="color:var(--sky);font-size:0.85rem;text-decoration:none">Facebook</a><a href="#" style="color:var(--sky);font-size:0.85rem;text-decoration:none">Instagram</a><a href="#" style="color:var(--sky);font-size:0.85rem;text-decoration:none">LinkedIn</a></div></div></div>
+    </div>
+    <div class="form rv">
+      <div class="f-row">
+        <div class="f-field"><label>First Name</label><input type="text" placeholder="Raj"></div>
+        <div class="f-field"><label>Last Name</label><input type="text" placeholder="Sharma"></div>
+      </div>
+      <div class="f-field"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+      <div class="f-field"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210"></div>
+      <div class="f-field">
+        <label>Product of Interest</label>
+        <select id="product-select">
+          <option value="">Select a product category</option>
+          <option>Grundfos Pressure Pumps (CM / CME)</option>
+          <option>3M Water Softener System (WTS42)</option>
+          <option>3M Ecosip Non-RO Drinking Water System (IAS140S)</option>
+          <option>Benchmark Residential Heat Pump</option>
+          <option>Benchmark Swimming Pool Heat Pump</option>
+          <option>Zero B Hydrolife Alkaline Water Purifier</option>
+          <option>Eureka Forbes Aquaguard Purifier</option>
+          <option>Eureka Forbes AWS i-2500 Water Softener</option>
+          <option>Dhaara Smart IoT Water Meter (Kritsnam)</option>
+          <option>Complete Home Water Solution</option>
+        </select>
+      </div>
+      <div class="f-field"><label>Message / Requirement</label><textarea placeholder="Tell us about your water challenges, property size, or specific requirements..."></textarea></div>
+      <button class="submit-btn" onclick="alert('Thank you! We will contact you within 24 hours.')">Send Enquiry →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Shree <span>Enterprises</span><br><span style="font-size:0.66rem;color:var(--muted);font-family:'DM Sans',sans-serif;letter-spacing:0.15em;font-weight:300">WATER SOLUTIONS</span></div>
+  <div class="f-copy">© 2025 Shree Enterprises. All rights reserved.</div>
+  <div class="f-nav"><a href="#about">About</a><a href="#products">Products</a><a href="#brands">Brands</a><a href="#contact">Contact</a></div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal-bg" onclick="closeModalBg(event)">
+  <div class="modal" id="modal-box">
+    <div class="modal-top"></div>
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-inner" id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+const DATA = {
+  grundfos:{
+    brand:'Grundfos',
+    title:'Pressure Pumps — CM & CME Series',
+    desc:'Grundfos is a world-leading pump manufacturer headquartered in Denmark, with over 75 years of engineering excellence. The CM and CME series are horizontal multi-stage centrifugal pumps that deliver consistent, reliable pressure across a wide range of residential, commercial, and light industrial applications.\n\nThe CME model incorporates an integrated frequency converter that continuously adjusts motor speed to match actual demand — reducing energy consumption by up to 50% compared to fixed-speed pumps. Both models feature a modular stainless-steel construction for long service life and easy on-site servicing.',
+    specs:[{k:'Flow Rate',v:'0.3 – 16 m³/h'},{k:'Max Head',v:'Up to 220 m'},{k:'Motor Power',v:'0.37 – 11 kW'},{k:'Type',v:'Horizontal End-Suction Multi-Stage'},{k:'Variants',v:'CM (Fixed Speed) / CME (Variable Speed)'},{k:'Materials',v:'Cast Iron / AISI 304 / AISI 316 Stainless Steel'}],
+    feats:['Ultra-quiet operation — ideal for apartments and residential buildings','Modular design allows quick customisation and in-field servicing','CME series with built-in frequency converter for intelligent pressure control','Cast iron variant for cost-conscious applications; stainless steel for corrosive water','Wide operating range from small domestic to commercial and light industrial use','Global service network ensuring certified spare parts availability at all times'],
+    tags:['Quiet','Modular','Variable Speed','Energy Efficient','Stainless Steel','Cast Iron','Residential','Commercial'],
+    link:'https://www.grundfos.com/in/find-product/products-a-z/cm-and-cme.html',
+    linkLabel:'Visit Grundfos Official Site ↗',
+    product:'Grundfos Pressure Pumps (CM / CME)',
+  },
+  '3msoft':{
+    brand:'3M™ Water Purification',
+    title:'Water Softener System — WTS42',
+    desc:'3M has been addressing water quality challenges for over 50 years. The WTS42 Water Softener System treats all incoming water using ion-exchange resin to remove dissolved minerals — calcium, magnesium, and other hardness-causing metals — before they can damage plumbing, fixtures, and appliances.\n\nThe advanced metered valve tracks actual water usage and initiates regeneration cycles only when necessary, saving salt and water compared to conventional time-clock softeners. NSF and WQA third-party certified for safety and performance.',
+    specs:[{k:'Technology',v:'Ion-Exchange Resin'},{k:'Application',v:'Homes up to 3 Bathrooms'},{k:'Certification',v:'NSF / WQA'},{k:'Regeneration',v:'Demand-Based (Metered)'},{k:'Components',v:'Salt Tank + Brine Tank + Resin Tank'},{k:'Valve',v:'Advanced Precision Control'}],
+    feats:['Removes calcium and magnesium — the root cause of scale in pipes, taps, and geysers','Significantly reduces detergent, soap, and shampoo consumption','Protects washing machines, dishwashers, and water heaters from premature scale damage','Brighter laundry, softer skin and hair, cleaner glassware and dishes','Metered regeneration uses salt and water only when needed — minimising running costs','NSF and WQA certified — third-party validated for health safety and softening effectiveness'],
+    tags:['NSF Certified','WQA Certified','Ion Exchange','Anti-Scale','Metered Regen','Hard Water','Salt Saving'],
+    link:'https://www.3mindia.in/3M/en_IN/water-purification-in/',
+    linkLabel:'Visit 3M India — Water Purification ↗',
+    product:'3M Water Softener System (WTS42)',
+  },
+  ecosip:{
+    brand:'3M™ Ecosip',
+    title:'IAS140S Non-RO Drinking Water System',
+    desc:'The 3M Ecosip IAS140S is a breakthrough kitchen purification system that delivers 99.95% germ-free water from every kitchen tap — without any electricity and without wasting a single drop. Unlike RO systems that reject up to 70% of water, the Ecosip utilises 100% of the water flowing through it.\n\nAt its core is 3M\'s proprietary I.M.P.A.C.T. technology — a pharmaceutical-grade two-zone microporous membrane combined with a pre-activated carbon block — that eliminates bacteria, cysts, chlorine, and odour while preserving essential minerals. Food-grade siliphose media additionally prevents scale formation on kitchen slabs and vessels.',
+    specs:[{k:'Capacity',v:'1,00,000 Litres / Cartridge'},{k:'Germ Removal',v:'99.95% Bacteria & Cysts'},{k:'Power',v:'None — Zero Electricity'},{k:'Water Waste',v:'Zero — 100% Utilisation'},{k:'Technology',v:'I.M.P.A.C.T. (3M Proprietary)'},{k:'Cartridge',v:'SQC Sanitary Quick Change'}],
+    feats:['Delivers safe water from any kitchen tap — drinking, cooking, washing vegetables','I.M.P.A.C.T.: pharmaceutical-grade microporous membrane + pre-activated carbon block','99.95% reduction of bacteria, cysts, and waterborne pathogens','Zero electricity requirement — operates entirely on municipal water pressure','Zero water rejection — 100% of incoming water is purified and usable','Food-grade siliphose media prevents scale buildup on kitchen slabs and utensils','SQC (Sanitary Quick Change) cartridge — easy, hygienic replacement without tools or mess'],
+    tags:['Zero Waste','No Electricity','I.M.P.A.C.T.','99.95% Germ Free','1L Lakh Capacity','SQC','Non-RO'],
+    link:'https://www.3mindia.in/3M/en_IN/water-purification-in/',
+    linkLabel:'Visit 3M India — Ecosip ↗',
+    product:'3M Ecosip Non-RO Drinking Water System (IAS140S)',
+  },
+  benchmark:{
+    brand:'Benchmark Heat Pumps',
+    title:'Heat Pump Water Heaters — Residential, Commercial & Pool',
+    desc:'Benchmark\'s heat pump water heaters represent the next generation of hot water technology for Indian homes, hotels, and swimming pools. Rather than generating heat using electric coils or gas burners, heat pumps extract thermal energy from surrounding ambient air and transfer it to water — delivering up to 4× more hot water per unit of electricity.\n\nBenchmark offers A-Class rated units across residential integrated (all-in-one), residential split (separate outdoor compressor + indoor tank), commercial multi-unit, and swimming pool configurations — with a range of tank capacities to suit every requirement.',
+    specs:[{k:'COP Efficiency',v:'Up to 4.0+ (400% efficiency)'},{k:'Energy Rating',v:'A-Class Heat Pump'},{k:'Applications',v:'Residential / Commercial / Pool'},{k:'Tank Options',v:'Short / Medium / Tall Models'},{k:'Technology',v:'Air-Source Heat Pump'},{k:'Control',v:'Digital Display + Smart Eco Modes'}],
+    feats:['Up to 75% lower electricity bills vs. conventional electric geysers','A-Class energy rating — the highest efficiency category for water heaters','Residential integrated model: outdoor unit + storage tank in single compact unit','Residential split model: separate outdoor compressor + indoor hot water tank','Commercial multi-unit setups for hotels, hostels, hospitals, and factories','Swimming pool heat pumps for year-round comfortable pool water temperatures','Digital control panel with adjustable temperature settings and smart eco mode'],
+    tags:['A-Class','COP 4.0+','Residential','Commercial','Swimming Pool','Energy Saving','Air-Source'],
+    link:'https://www.benchmarkheatpump.com',
+    linkLabel:'Visit Benchmark Heat Pumps ↗',
+    product:'Benchmark Residential Heat Pump',
+  },
+  zerob:{
+    brand:'Zero B Hydrolife · Ion Exchange',
+    title:'Alkaline Water Purifier — India\'s #1',
+    desc:'Zero B Hydrolife, by Ion Exchange — India\'s water treatment pioneer since 1964 — is the country\'s leading alkaline water purifier. It takes RO-purified water and passes it through an advanced ionisation chamber to raise pH to a healthy alkaline range of 7.5–9.5, creating water with antioxidant (negative ORP) properties that are beneficial to health.\n\nAlkaline water is widely believed to support immunity, improve cellular hydration, neutralise excess body acidity, and aid digestion. Zero B Hydrolife combines this health science with multi-stage RO + UV purification in one compact unit backed by a comprehensive 5-year warranty.',
+    specs:[{k:'Output pH',v:'7.5 – 9.5 (Alkaline)'},{k:'ORP',v:'Negative (Antioxidant)'},{k:'Purification',v:'RO + UV + Mineral Enhancement'},{k:'Warranty',v:'5 Years Comprehensive'},{k:'Service',v:'Doorstep Pan-India Support'},{k:'Brand Heritage',v:'Ion Exchange — Est. 1964'}],
+    feats:['Converts purified water to health-boosting alkaline pH of 7.5–9.5','Negative ORP means water has antioxidant properties that combat free radicals','Multi-stage purification: removes dissolved salts, heavy metals, bacteria, and viruses','Mineral enhancement stage reintroduces beneficial calcium and magnesium post-RO','May support immunity, improve cellular hydration, and help neutralise body acidity','Backed by Ion Exchange — India\'s pioneer in industrial and residential water treatment','5-year comprehensive warranty with doorstep servicing available across India'],
+    tags:['Alkaline pH 7.5–9.5','Antioxidant ORP','Immunity Boost','RO + UV','Mineral Enhance','5-Year Warranty','Ion Exchange'],
+    link:'https://www.ionexchangeglobal.com/zero-b/',
+    linkLabel:'Visit Zero B Hydrolife ↗',
+    product:'Zero B Hydrolife Alkaline Water Purifier',
+  },
+  eureka:{
+    brand:'Eureka Forbes · Aquaguard',
+    title:'Aquaguard Water Purifiers & AWS i-2500 Softener',
+    desc:'Eureka Forbes pioneered domestic water purification in India in 1984 and remains the most trusted brand in the category. The Aquaguard range today spans every purification need — from RO and UV for heavily contaminated water to Alkaline Boost for health-focused families, Active Copper for Ayurvedic enthusiasts, Under Counter units for clean aesthetics, and hot/ambient dispensers for kitchens and offices.\n\nFor hard water, the AWS i-2500 fully automatic water softener uses advanced ionic-transfer technology to deliver softened water at up to 4000 LPH — suitable for apartments, villas, and small commercial buildings.',
+    specs:[{k:'Purification Types',v:'RO / UV / UF / Alkaline / Copper'},{k:'Softener Model',v:'AWS i-2500 (Aquaguard)'},{k:'Softener Flow',v:'Up to 4000 LPH'},{k:'Softener Tech',v:'Ionic-Transfer (Fully Automatic)'},{k:'Dispensing',v:'Hot & Ambient / Ambient / Chilled'},{k:'Tank Options',v:'Stainless Steel Available'}],
+    feats:['RO purifier: up to 7-stage purification — removes dissolved salts, heavy metals, bacteria, viruses','UV purifier: ideal for low-TDS municipal water, eliminates 99.9% of microorganisms','Alkaline Boost: adds healthy alkaline minerals post-RO for pH-balanced drinking water','Active Copper: infuses purified water with beneficial copper ions — Ayurvedic benefit','Under Counter models: hidden installation for a clutter-free kitchen countertop','Hot & Ambient dispensers with insulated stainless steel tanks for offices and commercial spaces','AWS i-2500 softener with ionic-transfer technology — fully automatic, flow rate up to 4000 LPH'],
+    tags:['RO + UV + UF','Alkaline Boost','Active Copper','Under Counter','4000 LPH','Hot & Ambient','Ionic Transfer'],
+    link:'https://www.eurekaforbes.com/water-purifiers',
+    linkLabel:'Visit Eureka Forbes — Aquaguard ↗',
+    product:'Eureka Forbes Aquaguard Purifier',
+  },
+  dhaara:{
+    brand:'Kritsnam Technologies Pvt Ltd',
+    title:'Dhaara Smart — Advanced IoT Water Meter',
+    desc:'The Dhaara Smart from Kritsnam Technologies is India\'s most advanced CGWA-compliant smart water meter, purpose-built for groundwater users who need to meet regulatory reporting requirements without complex wired installations.\n\nPowered by a long-life battery with zero external wiring, the Dhaara Smart automatically records and uploads water consumption data to a secure online logbook via built-in 4G/2G cellular telemetry — eliminating manual readings, human error, and meter fraud. With an IP68 all-weather immersion rating and genuine plug-and-play installation, it is equally suited for industrial borewells, residential housing societies, and municipal utilities of all scales.',
+    specs:[{k:'Compliance',v:'CGWA (Central Ground Water Authority)'},{k:'Standard',v:'ISO Certified Accuracy'},{k:'Connectivity',v:'4G / 2G Cellular Telemetry'},{k:'Power Source',v:'Long-Life Battery (No External Wiring)'},{k:'Weather Rating',v:'IP68 — Full Dust & Immersion Protection'},{k:'Installation',v:'Plug & Play — Zero Civil Work'},{k:'Data Logging',v:'Automatic Secure Online Logbook'},{k:'Communication',v:'GPRS / NB-IoT'}],
+    feats:['Fully compliant with CGWA mandates for groundwater extraction monitoring','ISO-certified measurement accuracy for reliable regulatory reporting','4G/2G telemetry auto-uploads consumption data — no manual meter reading ever required','Secure online logbook accessible 24/7 via web dashboard or mobile application','IP68 rated — functional when submerged, operational in all outdoor weather conditions','Battery-operated: no power connection needed, installs in remote locations with no grid','Plug & Play: zero civil work, no drilling, no wiring — operational within minutes of installation','Tamper detection and real-time alert system for accurate billing and compliance assurance'],
+    tags:['CGWA Compliant','ISO Certified','4G IoT','IP68','Battery Powered','Plug & Play','Online Logbook','GPRS'],
+    link:'https://www.kritsnam.in',
+    linkLabel:'Visit Kritsnam Technologies ↗',
+    product:'Dhaara Smart IoT Water Meter (Kritsnam)',
+  },
+};
+
+function openModal(id){
+  const p=DATA[id]; if(!p) return;
+  const specs=p.specs.map(s=>`<div class="modal-spec"><div class="sk">${s.k}</div><div class="sv">${s.v}</div></div>`).join('');
+  const feats=p.feats.map(f=>`<div class="feat-item"><div class="feat-dot"></div><div class="feat-text">${f}</div></div>`).join('');
+  const tags=p.tags.map(t=>`<span class="ptag">${t}</span>`).join('');
+  const desc=p.desc.replace(/\n\n/g,'</p><p style="margin-top:1rem">');
+  document.getElementById('modal-content').innerHTML=`
+    <p class="modal-brand">${p.brand}</p>
+    <h2 class="modal-title">${p.title}</h2>
+    <div class="modal-desc"><p>${desc}</p></div>
+    <div class="modal-grid">${specs}</div>
+    <p class="modal-h4">Key Features & Benefits</p>
+    <div class="feat-list">${feats}</div>
+    <div class="modal-tags">${tags}</div>
+    <div class="modal-actions">
+      <a class="modal-link" href="${p.link}" target="_blank" rel="noopener">${p.linkLabel}</a>
+      <a class="modal-link-g" href="#contact" onclick="closeModal();setTimeout(()=>{document.getElementById('product-select').value='${p.product}'},400)">Request a Quote</a>
+    </div>`;
+  document.getElementById('modal-bg').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('modal-bg').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeModalBg(e){ if(e.target===document.getElementById('modal-bg')) closeModal(); }
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+// Scroll reveal
+new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('on'),i*75); } });
+},{threshold:0.1}).observe||void 0;
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('on'),i*80); io.unobserve(e.target); } });
+},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// Nav scroll
+window.addEventListener('scroll',()=>document.getElementById('main-nav').classList.toggle('scrolled',scrollY>60));
+</script>
+</body>
+</html>
